@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Hardware overview | Xgo Wiki</title>
+    
+    
+        <meta name="keywords" content="Hardware overview" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="XGO-Mini K210 Architecture Diagram The core architecture of the XGO-Mini K210 version is the K210 artificial intelligence module, and the AI-related tasks of the robot dog are all completed by the ho">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hardware overview">
+<meta property="og:url" content="https://xgorobot.github.io/XgoWiki-en/wiki/1%20XGO-Mini/Hardware%20overview/index.html">
+<meta property="og:site_name" content="Xgo Wiki">
+<meta property="og:description" content="XGO-Mini K210 Architecture Diagram The core architecture of the XGO-Mini K210 version is the K210 artificial intelligence module, and the AI-related tasks of the robot dog are all completed by the ho">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://xgorobot.github.io/XgoWiki-en/wiki/1%20XGO-Mini/Hardware%20overview/xitonge.png">
+<meta property="og:image" content="https://xgorobot.github.io/XgoWiki-en/wiki/1%20XGO-Mini/Hardware%20overview/jiegou.png">
+<meta property="og:image" content="https://xgorobot.github.io/XgoWiki-en/wiki/1%20XGO-Mini/Hardware%20overview/3032.png">
+<meta property="article:published_time" content="2022-02-13T15:45:57.000Z">
+<meta property="article:modified_time" content="2022-06-06T05:34:01.911Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xgorobot.github.io/XgoWiki-en/wiki/1%20XGO-Mini/Hardware%20overview/xitonge.png">
+    
+
+    
+
+    
+        <link rel="icon" href="/XgoWiki-en/images/xgo_icon45.png" />
+    
+
+    
+<link rel="stylesheet" href="/XgoWiki-en/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/XgoWiki-en/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/XgoWiki-en/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/XgoWiki-en/css/style.css">
+
+    
+<script src="/XgoWiki-en/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/XgoWiki-en/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/XgoWiki-en/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/XgoWiki-en/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/XgoWiki-en/atom.xml" title="Xgo Wiki" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/XgoWiki-en/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Xgo Wiki</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/XgoWiki-en/">home</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/XgoWiki-en/',
+        CONTENT_URL: '/XgoWiki-en/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/XgoWiki-en/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/XgoWiki-en/">home</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            1 XGO-Mini
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            F.A.Q
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/F.A.Q/How%20to%20calibrate%20XGO-Mini/">How to calibrate XGO-Mini?</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/F.A.Q/How%20to%20program%20with%20Micropython/">How to program with Micropython?</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/F.A.Q/How%20to%20update%20firmware%20of%20K210%20and%20SD%20files/">How to update firmware of K210 and SD files</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/F.A.Q/How%20to%20update%20firmware%20of%20XGO-Mini%20driver/">How to update firmware of XGO-Mini driver</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            For XGO developer
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/For%20XGO%20developer/Develop%20mode/">Develop mode</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/For%20XGO%20developer/How%20to%20install%20Raspberry%20on%20XGO-Mini/">How to install Raspberry on XGO-Mini</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/For%20XGO%20developer/Python%20Lib/">Python Lib</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/For%20XGO%20developer/Serial%20protocol/">Serial protocol</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/For%20XGO%20developer/ROS%20package/"><ROS Pankaee></a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/For%20XGO%20developer/ROS/">ROS</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Troubleshooting
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/Troubleshooting/Can%20not%20walk%20strightly%20in%20line/">Can not walk strightly in line</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/Troubleshooting/Can%20not%20connect%20by%20bluetooth/">Can not connect by bluetooth</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/Product%20Introduction/">Product introduction</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/What's%20in%20the%20box/">What's in the box?</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/specifications/">specifications</a></li>  <li class="file active"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/Hardware%20overview/">Hardware overview</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/Remote%20control/">Remote control</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/Quick%20start/">Quick start</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/Programming%20platform/">Programming platform</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/Course%20center/">Course center</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            2 XGO-Lite
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/XgoWiki-en/wiki/2%20XGO-Lite/Product%20Introduction/">Product Introduction</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/2%20XGO-Lite/What's%20in%20the%20box/">What's in the box?</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/2%20XGO-Lite/Specifications/">Specifications</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/2%20XGO-Lite/Remote%20control/">Remote control</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/2%20XGO-Lite/Quick%20start/">Quick start</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/2%20XGO-Lite/Programming%20platform/">Programming platform</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/2%20XGO-Lite/Course%20center/">Course center</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            3 XGO-Ultra
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/XgoWiki-en/wiki/3%20XGO-Ultra/Product%20introduction/">Product introduction</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/XgoWiki-en/wiki/Xgo/">Luwu Dynamics</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/Edit/">编辑指南</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-1 XGO-Mini/Hardware overview" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/XgoWiki-en/categories/1-XGO-Mini/">1 XGO-Mini</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/XgoWiki-en/wiki/1%20XGO-Mini/Hardware%20overview/">
+            <time datetime="2022-02-13T15:45:57.000Z" itemprop="datePublished">2022-02-13</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/Xgorobot/Wiki-site/raw/en/source/_posts/1 XGO-Mini/Hardware overview.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/Xgorobot/Wiki-site/edit/en/source/_posts/1 XGO-Mini/Hardware overview.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/Xgorobot/Wiki-site/commits/en/source/_posts/1 XGO-Mini/Hardware overview.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Hardware overview
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#xgo-mini-k210-architecture-diagram"><span class="toc-number">1.</span> <span class="toc-text">XGO-Mini K210 Architecture Diagram</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#structure-introduction"><span class="toc-number">2.</span> <span class="toc-text">Structure introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#servo-introduction"><span class="toc-number">3.</span> <span class="toc-text">Servo introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#batteries-and-chargers"><span class="toc-number">4.</span> <span class="toc-text">Batteries and Chargers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#introduction-to-the-host-computer-k210"><span class="toc-number">5.</span> <span class="toc-text">Introduction to the host computer K210</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ai-module-motherboard"><span class="toc-number">5.0.1.</span> <span class="toc-text">AI Module Motherboard</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#screen-module"><span class="toc-number">5.0.2.</span> <span class="toc-text">screen module</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#camera-module"><span class="toc-number">5.0.3.</span> <span class="toc-text">Camera Module</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#introduction-to-the-lower-computer-stm32"><span class="toc-number">6.</span> <span class="toc-text">Introduction to the lower computer STM32</span></a></li></ol>
+                </div>
+            
+        
+        
+            <h2 id="xgo-mini-k210-architecture-diagram">XGO-Mini K210 Architecture Diagram</h2>
+<p>The core architecture of the XGO-Mini K210 version is the K210 artificial intelligence module, and the AI-related tasks of the robot dog are all completed by the host computer. The lower computer is developed by MCU, which is responsible for the power management of the robot dog, the servo drive and the core gait algorithm, etc., and encapsulates a complete serial communication protocol for the convenience of the upper computer.</p>
+<figure>
+<img src="./xitonge.png" alt="XGO-Mini K210 system architecture diagram" /><figcaption aria-hidden="true">XGO-Mini K210 system architecture diagram</figcaption>
+</figure>
+<h2 id="structure-introduction">Structure introduction</h2>
+<p>The main structure of XGO-Mini K210 is composed of 1.5mm thick aluminum alloy structural parts and all-metal magnetic encoder servos. The legs are composed of silicone shanks and nylon foot pads. The AI ​​module and driver board of the head are composed of 4pin signal lines. Connection, built-in 2 18650 lithium batteries, the specific structure is shown in the figure below, here is <a target="_blank" rel="noopener" href="https://drive.google.com/drive/folders/1zqjT4h2hXV2Yos1dHEd7AmH6ldilg3oQ?usp=sharing">XGO-Mini K210 3D model download</a>. <img src="./jiegou.png" alt="XGO-Mini K210 structure diagram" /></p>
+<ol type="1">
+<li>AI module</li>
+<li>AI module bracket</li>
+<li>Robot dog front cover</li>
+<li>Robot dog back cover</li>
+<li>Self-locking switch</li>
+<li>18650 2S battery</li>
+<li>Core driver board</li>
+<li>Bottom cover of robot dog</li>
+<li>Charging port</li>
+<li>Metal High Speed ​​Magnetic Encoding Bus Servo</li>
+</ol>
+<ul>
+<li>③The front cover of the robot dog, the ④the back cover of the robot dog and the ⑧ the bottom cover of the robot dog are used as the robot dog frame to connect various components. The front and rear legs are fixed on the front and rear sides of the bottom cover of the robot dog through four screws respectively; the core drive board is fixed in the middle of the bottom cover of the robot dog through four plastic screws.</li>
+<li>Each leg is equipped with three servos as elbow, shoulder and hip joints. Mechanically, the three joint servos are fixedly connected using aluminum alloy structural parts. Electrically, the elbow joint servo and shoulder joint servo, shoulder joint servo and hip joint servo, and hip joint servo and the core drive board are each connected with a servo wire, so that the core drive board can drive and control all the servos. joint servo.</li>
+<li>The AI ​​module is fixed on the front cover of the robot dog together with the AI ​​module bracket, and is connected to the core driver board through the AI ​​module serial port cable.</li>
+<li>The switch is fixed on the back cover of the robot dog with a nut, and is connected with the core driver board. The switch is a self-locking type, that is, it does not rebound after being pressed and the robot dog is in a continuous power-on state; after pressing it again, the robot dog is powered off and will lie down and shut down after 3 to 4 seconds.</li>
+<li>There are two 18650 2S batteries, which are installed on the battery holder on the core driver board through the correct positive and negative poles.</li>
+<li>The charging hole is integrated on the core driver board and exposed from the bottom cover of the robot dog.</li>
+</ul>
+<h2 id="servo-introduction">Servo introduction</h2>
+<p>The modular servo joint of XGO-Mini is composed of a DC hollow cup motor, a reduction gear set, a 12-bit magnetic encoder and an integrated control circuit. It has its own closed-loop control and planning algorithm, high-speed bus communication, 360-degree angle control, and supports speed, Position, current, temperature feedback and control parameter adjustment functions provide high-performance servo drives for robots. The customized joint provides PID parameter adjustment, optimizes the joint impedance characteristics (compliance), and based on the basic kinematic gait planning, combined with the consideration of the center of gravity and the feedback of the IMU, as well as the requirements of the upper-level control commands, real-time can be performed adjustment. At the same time, a large speed ratio and high-efficiency reducer is adopted, which ensures the flexibility and improves the load-to-weight ratio. <img src="./3032.png" alt="XGO-Mini custom joint" style="zoom:40%;" /></p>
+<h2 id="batteries-and-chargers">Batteries and Chargers</h2>
+<p>XGO-Mini adopts 18650 2500 mAh 3C standard battery, adopts wide voltage charger design, and provides four kinds of charging plugs of national standard, American standard, British standard and EU.</p>
+<h2 id="introduction-to-the-host-computer-k210">Introduction to the host computer K210</h2>
+<p>As the main control module of artificial intelligence-related applications, the AI ​​module has basic computer vision recognition functions and inference functions of machine learning models, which can help implement entry-level and advanced AI applications.</p>
+<h4 id="ai-module-motherboard">AI Module Motherboard</h4>
+<ul>
+<li>Built-in Kanzhi K210 chip, using RISC-V processor architecture, with audio-visual integration, independent IP core and strong programmable ability.</li>
+<li>Support Micro SD card to store images, audio, video, machine learning models and other data.</li>
+<li>Socket for integrated camera module for front-facing shooting.</li>
+</ul>
+<h4 id="screen-module">screen module</h4>
+<ul>
+<li>Integrated camera module socket for rear camera use;</li>
+<li>1.54-inch LCD full-color screen, displaying pictures in JPG, BMP and other formats;</li>
+<li>Can be used for external 2.5mm audio interface;</li>
+</ul>
+<h4 id="camera-module">Camera Module</h4>
+<ul>
+<li>The resolution of the AI ​​camera is 30w pixels, which can be plugged into the screen module or AI module respectively to become a front or rear camera.</li>
+</ul>
+<h2 id="introduction-to-the-lower-computer-stm32">Introduction to the lower computer STM32</h2>
+<ul>
+<li>Select STM32F405RGT6, which is ARM®Cortex®-M4 32-bit RISC core, operates at 168Mhz, has 64 pins, meets the computing power requirements of real-time kinematics inverse solution, and has enough interfaces and peripherals Communication, use the serial port to communicate with the serial port servo, the IIC interface reads the gyroscope MPU9250 data, and the system uses two 18650 lithium batteries for power supply.</li>
+</ul>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/XgoWiki-en/wiki/2%20XGO-Lite/Quick%20start/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Quick start
+                
+            </div>
+        </a>
+    
+    
+        <a href="/XgoWiki-en/wiki/2%20XGO-Lite/Remote%20control/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Remote control</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Xgo Wiki &copy; 2022 
+            <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/XgoWiki-en/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/XgoWiki-en/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/XgoWiki-en/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/XgoWiki-en/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/XgoWiki-en/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/XgoWiki-en/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/XgoWiki-en/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/XgoWiki-en/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/XgoWiki-en/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/XgoWiki-en/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/XgoWiki-en/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

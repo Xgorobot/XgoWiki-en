@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Python Lib | Xgo Wiki</title>
+    
+    
+        <meta name="keywords" content="Python Lib" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="XGOLIB Python Library aim This document aims to describe the API interface of XGO in detail for the development of upper computer python. XGO-Mini Python Lib Download. Revision record 2022.3.10 cr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python Lib">
+<meta property="og:url" content="https://xgorobot.github.io/XgoWiki-en/wiki/1%20XGO-Mini/For%20XGO%20developer/Python%20Lib/index.html">
+<meta property="og:site_name" content="Xgo Wiki">
+<meta property="og:description" content="XGOLIB Python Library aim This document aims to describe the API interface of XGO in detail for the development of upper computer python. XGO-Mini Python Lib Download. Revision record 2022.3.10 cr">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-02-23T15:45:57.000Z">
+<meta property="article:modified_time" content="2022-06-06T05:34:01.893Z">
+<meta name="twitter:card" content="summary">
+    
+
+    
+
+    
+        <link rel="icon" href="/XgoWiki-en/images/xgo_icon45.png" />
+    
+
+    
+<link rel="stylesheet" href="/XgoWiki-en/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/XgoWiki-en/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/XgoWiki-en/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/XgoWiki-en/css/style.css">
+
+    
+<script src="/XgoWiki-en/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/XgoWiki-en/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/XgoWiki-en/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/XgoWiki-en/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/XgoWiki-en/atom.xml" title="Xgo Wiki" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/XgoWiki-en/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Xgo Wiki</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/XgoWiki-en/">home</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/XgoWiki-en/',
+        CONTENT_URL: '/XgoWiki-en/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/XgoWiki-en/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/XgoWiki-en/">home</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            1 XGO-Mini
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            F.A.Q
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/F.A.Q/How%20to%20calibrate%20XGO-Mini/">How to calibrate XGO-Mini?</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/F.A.Q/How%20to%20program%20with%20Micropython/">How to program with Micropython?</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/F.A.Q/How%20to%20update%20firmware%20of%20K210%20and%20SD%20files/">How to update firmware of K210 and SD files</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/F.A.Q/How%20to%20update%20firmware%20of%20XGO-Mini%20driver/">How to update firmware of XGO-Mini driver</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            For XGO developer
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/For%20XGO%20developer/Develop%20mode/">Develop mode</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/For%20XGO%20developer/How%20to%20install%20Raspberry%20on%20XGO-Mini/">How to install Raspberry on XGO-Mini</a></li>  <li class="file active"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/For%20XGO%20developer/Python%20Lib/">Python Lib</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/For%20XGO%20developer/Serial%20protocol/">Serial protocol</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/For%20XGO%20developer/ROS%20package/"><ROS Pankaee></a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/For%20XGO%20developer/ROS/">ROS</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Troubleshooting
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/Troubleshooting/Can%20not%20walk%20strightly%20in%20line/">Can not walk strightly in line</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/Troubleshooting/Can%20not%20connect%20by%20bluetooth/">Can not connect by bluetooth</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/Product%20Introduction/">Product introduction</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/What's%20in%20the%20box/">What's in the box?</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/specifications/">specifications</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/Hardware%20overview/">Hardware overview</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/Remote%20control/">Remote control</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/Quick%20start/">Quick start</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/Programming%20platform/">Programming platform</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/Course%20center/">Course center</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            2 XGO-Lite
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/XgoWiki-en/wiki/2%20XGO-Lite/Product%20Introduction/">Product Introduction</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/2%20XGO-Lite/What's%20in%20the%20box/">What's in the box?</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/2%20XGO-Lite/Specifications/">Specifications</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/2%20XGO-Lite/Remote%20control/">Remote control</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/2%20XGO-Lite/Quick%20start/">Quick start</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/2%20XGO-Lite/Programming%20platform/">Programming platform</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/2%20XGO-Lite/Course%20center/">Course center</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            3 XGO-Ultra
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/XgoWiki-en/wiki/3%20XGO-Ultra/Product%20introduction/">Product introduction</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/XgoWiki-en/wiki/Xgo/">Luwu Dynamics</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/Edit/">编辑指南</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-1 XGO-Mini/For XGO developer/Python Lib" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/XgoWiki-en/categories/1-XGO-Mini/">1 XGO-Mini</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/XgoWiki-en/categories/1-XGO-Mini/For-XGO-developer/">For XGO developer</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/XgoWiki-en/wiki/1%20XGO-Mini/For%20XGO%20developer/Python%20Lib/">
+            <time datetime="2022-02-23T15:45:57.000Z" itemprop="datePublished">2022-02-23</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/Xgorobot/Wiki-site/raw/en/source/_posts/1 XGO-Mini/For XGO developer/Python Lib.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/Xgorobot/Wiki-site/edit/en/source/_posts/1 XGO-Mini/For XGO developer/Python Lib.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/Xgorobot/Wiki-site/commits/en/source/_posts/1 XGO-Mini/For XGO developer/Python Lib.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Python Lib
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#xgolib-python-library"><span class="toc-number">1.</span> <span class="toc-text">XGOLIB Python Library</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#aim"><span class="toc-number">1.1.</span> <span class="toc-text">aim</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#revision-record"><span class="toc-number">1.2.</span> <span class="toc-text">Revision record</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xgo-class"><span class="toc-number">1.3.</span> <span class="toc-text">XGO Class</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mobile-related-methods"><span class="toc-number">1.4.</span> <span class="toc-text">Mobile related methods</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#front-and-back-left-and-right-translation"><span class="toc-number">1.4.1.</span> <span class="toc-text">1.Front and back, left and right translation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#revolve"><span class="toc-number">1.4.2.</span> <span class="toc-text">2.revolve</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mark-time"><span class="toc-number">1.4.3.</span> <span class="toc-text">3.mark time</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#step-frequency"><span class="toc-number">1.4.4.</span> <span class="toc-text">4.step frequency</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#stop"><span class="toc-number">1.4.5.</span> <span class="toc-text">5.stop</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#position-methods"><span class="toc-number">1.5.</span> <span class="toc-text">Position Methods</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#body-position-translation"><span class="toc-number">1.5.1.</span> <span class="toc-text">1.Body position translation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#body-posture-adjustment"><span class="toc-number">1.5.2.</span> <span class="toc-text">2.Body posture adjustment</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#body-cycle-translation"><span class="toc-number">1.5.3.</span> <span class="toc-text">3.Body cycle translation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#body-cycle-rotation"><span class="toc-number">1.5.4.</span> <span class="toc-text">4.Body cycle rotation</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#other-methods"><span class="toc-number">1.6.</span> <span class="toc-text">other methods</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#restore-the-initial-state"><span class="toc-number">1.6.1.</span> <span class="toc-text">Restore the initial state</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#set-the-self-stabilization"><span class="toc-number">1.6.2.</span> <span class="toc-text">Set the self-stabilization</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#single-leg"><span class="toc-number">1.6.3.</span> <span class="toc-text">Single Leg</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#servo-control"><span class="toc-number">1.6.4.</span> <span class="toc-text">Servo Control</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#uninstall-the-single-leg-servo"><span class="toc-number">1.6.5.</span> <span class="toc-text">Uninstall the single leg Servo</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#all-servo-are-uninstalled"><span class="toc-number">1.6.6.</span> <span class="toc-text">All Servo are uninstalled</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#single-leg-servo-loading"><span class="toc-number">1.6.7.</span> <span class="toc-text">Single leg Servo loading</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#all-servo-are-loaded"><span class="toc-number">1.6.8.</span> <span class="toc-text">All Servo are loaded</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#set-the-servo-rotation-speed"><span class="toc-number">1.6.9.</span> <span class="toc-text">Set the Servo rotation speed</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#update-the-name-of-bluetooth"><span class="toc-number">1.6.10.</span> <span class="toc-text">update the name of bluetooth</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#perform-a-preset-action"><span class="toc-number">1.6.11.</span> <span class="toc-text">Perform a preset action</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#calibration"><span class="toc-number">1.6.12.</span> <span class="toc-text">calibration</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#read"><span class="toc-number">1.7.</span> <span class="toc-text">Read</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#read-the-servo"><span class="toc-number">1.7.1.</span> <span class="toc-text">read the servo</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#read-the-battery"><span class="toc-number">1.7.2.</span> <span class="toc-text">Read the battery</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#read-positon"><span class="toc-number">1.7.3.</span> <span class="toc-text">read positon</span></a></li></ol></li></ol></li></ol>
+                </div>
+            
+        
+        
+            <h2 id="xgolib-python-library">XGOLIB Python Library</h2>
+<h3 id="aim">aim</h3>
+<p>This document aims to describe the API interface of XGO in detail for the development of upper computer python. <a target="_blank" rel="noopener" href="https://github.com/Xgorobot/mini-pythonlib">XGO-Mini Python Lib Download</a>.</p>
+<h3 id="revision-record">Revision record</h3>
+<p>2022.3.10 creat</p>
+<h3 id="xgo-class">XGO Class</h3>
+<p>All functions are implemented by the methods owned by <strong>XGO</strong>. When instantiating an XGO class object, three parameters need to be passed in. The first one is the physical interface for serial communication between the host computer and the robot dog. It needs to be modified according to the actual situation. The second parameter is the baud rate of 115200, and the third parameter is 'xgomini' or 'xgolite' according to the model. Assuming that the serial communication interface is COM4, the instantiation code is as follows. <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dog = XGO(&#x27;COM4&#x27;,115200,&#x27;xgomini&#x27;)</span><br><span class="line">dog = XGO(&#x27;COM4&#x27;,115200,&#x27;xgolite&#x27;)</span><br></pre></td></tr></table></figure> The following will borrow the <strong>dog</strong> object to describe the function of the class method. For methods related to pose adjustment and single-leg control, you can check the serial port communication protocol document to understand the definition of the robot coordinate system. <br/></p>
+<h3 id="mobile-related-methods">Mobile related methods</h3>
+<h4 id="front-and-back-left-and-right-translation">1.Front and back, left and right translation</h4>
+<p><strong>move(direction, step)</strong></p>
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Parameter Name</th>
+<th style="text-align: center;">Format</th>
+<th style="text-align: center;">Input Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">direction</td>
+<td style="text-align: center;">character</td>
+<td style="text-align: center;">'x'、'X'、'y'、'Y'</td>
+<td>'x'or'X'moves the machine dog forward or back，'y'or'Y'moves the machine dog left or right</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">step</td>
+<td style="text-align: center;">figure</td>
+<td style="text-align: center;">x:[-25,25],y:[-18,18]</td>
+<td>This parameter represents the translation step size, according to the direction, a positive value represents forward or left shift, and a negative value represents backward or right shift. When the input value exceeds the range, move according to the limit value</td>
+</tr>
+</tbody>
+</table>
+<h4 id="revolve">2.revolve</h4>
+<p><strong>turn(step)</strong></p>
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Parameter Name</th>
+<th style="text-align: center;">Format</th>
+<th style="text-align: center;">Input Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">step</td>
+<td style="text-align: center;">figure</td>
+<td style="text-align: center;">[-150,150]</td>
+<td>This parameter represents rotational speed in ° / s, positive is left and negative is right.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="mark-time">3.mark time</h4>
+<p><strong>mark_time(data)</strong></p>
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Parameter Name</th>
+<th style="text-align: center;">Format</th>
+<th style="text-align: center;">Input Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">data</td>
+<td style="text-align: center;">figure</td>
+<td style="text-align: center;">[10,35]</td>
+<td>This parameter represents the height of leg lift in mm and stop standing when the input is 0</td>
+</tr>
+</tbody>
+</table>
+<h4 id="step-frequency">4.step frequency</h4>
+<p><strong>pace(mode)</strong> speed = step frequency x stripe</p>
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Parameter Name</th>
+<th style="text-align: center;">Format</th>
+<th style="text-align: center;">Input Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">mode</td>
+<td style="text-align: center;">string</td>
+<td style="text-align: center;">['normal','slow','high']</td>
+<td>This parameter represents the step frequency, and normal is the default step frequency, low is the slow step frequency, and high is the high-speed step frequency</td>
+</tr>
+</tbody>
+</table>
+<h4 id="stop">5.stop</h4>
+<p><strong>stop()</strong> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">demo</span><br><span class="line">#The machine dog moves at 18mm stripe</span><br><span class="line">dog.move(&#x27;x&#x27;,18)</span><br><span class="line"></span><br><span class="line">#The machine dog moves right in 5mm stripe</span><br><span class="line">dog.move(&#x27;y&#x27;,-5)</span><br><span class="line"></span><br><span class="line">#The code can be executed normally and will move left at 18mm stripe </span><br><span class="line">dog.move(&#x27;Y&#x27;,30)</span><br><span class="line"></span><br><span class="line">#The machine dog turns left at 60 ° / s</span><br><span class="line">dog.turn(60)</span><br><span class="line"></span><br><span class="line">#The machine dog moves at a high-speed pace</span><br><span class="line">dog.pace(&#x27;high&#x27;)</span><br><span class="line"></span><br><span class="line">#The machine dog mark time at the height of 25mm</span><br><span class="line">dog.mark_time(25)</span><br><span class="line"></span><br><span class="line">#The machine dog stop make time</span><br><span class="line">dog.mark_time(0)</span><br><span class="line"></span><br><span class="line">#Machine dog stop</span><br><span class="line">dog.stop()</span><br></pre></td></tr></table></figure> A series of methods are encapsulated in the library based on these methods for easy use.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">name</th>
+<th style="text-align: center;">explain</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">move_x(step)</td>
+<td style="text-align: center;">Move front and back, equivalent to move('x', step)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">move_y(step)</td>
+<td style="text-align: center;">Move left to right, equivalent to move('y', step)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">forward(step)</td>
+<td style="text-align: center;">Forward, equivalent to move('x', abs(step))</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">back(step)</td>
+<td style="text-align: center;">Back, equivalent to move('x', -abs(step))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">left(step)</td>
+<td style="text-align: center;">Left , equivalent to move('y', abs(step))</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">right(step)</td>
+<td style="text-align: center;">Right , equivalent to move('y', -abs(step))</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">turnleft(step)</td>
+<td style="text-align: center;">Left turn, equivalent to turn(abs(step))</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">turnright(step)</td>
+<td style="text-align: center;">Turn right, equivalent to turn(-abs(step))</td>
+</tr>
+</tbody>
+</table>
+<p><br/></p>
+<h3 id="position-methods">Position Methods</h3>
+<p>When adjusting the position, the foot position of the four legs does not change, and the position or Angle of the body changes.</p>
+<h4 id="body-position-translation">1.Body position translation</h4>
+<p><strong>translation(direction, data)</strong></p>
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Parameter Name</th>
+<th style="text-align: center;">Format</th>
+<th style="text-align: center;">Input Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">direction</td>
+<td style="text-align: center;">Single-character or character list</td>
+<td style="text-align: center;">'x'、'y'、'z'or a list containing the above values</td>
+<td>'x' represents forward and backward translation, 'y' represents left and right translation, and 'z' represents height</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">data</td>
+<td style="text-align: center;">figure</td>
+<td style="text-align: center;">x:[-35,35],y:[-18,18],z:[75,115]</td>
+<td>This parameter represents the body position translation distance in mm</td>
+</tr>
+</tbody>
+</table>
+<h4 id="body-posture-adjustment">2.Body posture adjustment</h4>
+<p><strong>attitude(direction, data)</strong></p>
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Parameter Name</th>
+<th style="text-align: center;">Format</th>
+<th style="text-align: center;">Input Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">direction</td>
+<td style="text-align: center;">Single-character or character list</td>
+<td style="text-align: center;">'r'、'p'、'y'or a list containing the above values</td>
+<td>'r'is roll，'p'is pitch，'y'is yaw</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">data</td>
+<td style="text-align: center;">figure</td>
+<td style="text-align: center;">r:[-20,20],p:[-15,15],y:[11,11]</td>
+<td>This parameter represents the magnitude of the body pose adjustment in °</td>
+</tr>
+</tbody>
+</table>
+<h4 id="body-cycle-translation">3.Body cycle translation</h4>
+<p><strong>periodic_tran(direction, period)</strong><br />
+the body will be reciprocated in the specified period and direction by half the position translation limit, allowing periodic movements in multiple directions simultaneously.Body cycle movement and the whole machine movement cannot be carried out at the same time.</p>
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Parameter Name</th>
+<th style="text-align: center;">Format</th>
+<th style="text-align: center;">Input Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">direction</td>
+<td style="text-align: center;">Single character or character list</td>
+<td style="text-align: center;">'x'、'y'、'z'or a list containing the above values</td>
+<td>'x'represents forward and backward translation，'y'represents left and right translation，'z'represents height</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">period</td>
+<td style="text-align: center;">figure</td>
+<td style="text-align: center;">[1.5,8]</td>
+<td>This parameter represents the motion cycle in second; entering 0 represents the stop movement</td>
+</tr>
+</tbody>
+</table>
+<h4 id="body-cycle-rotation">4.Body cycle rotation</h4>
+<p><strong>periodic_rot(direction, period)</strong></p>
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Parameter Name</th>
+<th style="text-align: center;">Format</th>
+<th style="text-align: center;">Input Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">direction</td>
+<td style="text-align: center;">Single character or character list</td>
+<td style="text-align: center;">'r'、'p'、'y'or a list containing the above values</td>
+<td>'r'is roll，'p'is pitch，'y'is yaw</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">period</td>
+<td style="text-align: center;">figure</td>
+<td style="text-align: center;">[1.5,8]</td>
+<td>This parameter represents the motion cycle in second; entering 0 represents the stop movement</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">demo</span><br><span class="line">#The body translate18mm forward</span><br><span class="line">dog.translation(&#x27;x&#x27;,18)</span><br><span class="line"></span><br><span class="line">#The body translate10mm to the right and height set to 100mm</span><br><span class="line">#You can enter either a single value or a list to control the movement in multiple directions</span><br><span class="line">dog.translation([&#x27;y&#x27;,&#x27;z&#x27;],[-10,100])</span><br><span class="line"></span><br><span class="line">#The body pitch angle was set to 10 °, yaw angle set to-4 ° and roll angle set to 8 °</span><br><span class="line">dog.attitude([&#x27;p&#x27;,&#x27;y&#x27;,&#x27;r&#x27;],[10,-4,8])</span><br><span class="line"></span><br><span class="line">#The body was operated in a 3s cycle, with forward and backward translation</span><br><span class="line">dog.periodic_tran(&#x27;x&#x27;,3)</span><br><span class="line"></span><br><span class="line">#The body was reciprocated at a 3s cycle and at a yaw angle at a 7.4s cycle</span><br><span class="line">dog.periodic_rot([&#x27;r&#x27;,&#x27;y&#x27;],[3,7.4])</span><br><span class="line"></span><br><span class="line">#Stop the reciprocation of the yaw angle</span><br><span class="line">dog.periodic_rot(&#x27;y&#x27;,0)</span><br></pre></td></tr></table></figure>
+<h3 id="other-methods">other methods</h3>
+<h4 id="restore-the-initial-state">Restore the initial state</h4>
+<p><strong>reset()</strong><br />
+stops all movements, and all states return to the initial state <br/></p>
+<h4 id="set-the-self-stabilization">Set the self-stabilization</h4>
+<p><strong>imu(mode)</strong><br />
+When self-stable , the machine dog will automatically adjust the attitude angle to keep the back in a horizontal position, and must not manually set the attitude angle when turned on.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Parameter Name</th>
+<th style="text-align: center;">Format</th>
+<th style="text-align: center;">Input Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">mode</td>
+<td style="text-align: center;">integer</td>
+<td style="text-align: center;">0、1</td>
+<td>0 Represents turn off, and 1 represents turn on</td>
+</tr>
+</tbody>
+</table>
+<p><strong>perform(mode)</strong><br />
+In performance mode, the robot dog will cycle through the preset actions.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Parameter Name</th>
+<th style="text-align: center;">Format</th>
+<th style="text-align: center;">Input Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">mode</td>
+<td style="text-align: center;">integer</td>
+<td style="text-align: center;">0、1</td>
+<td>0 Represents turn off, and 1 represents turn on</td>
+</tr>
+</tbody>
+</table>
+<p><br/></p>
+<h4 id="single-leg">Single Leg</h4>
+<p><strong>leg(leg_id, data)</strong><br />
+Controls the foot position of the specified leg</p>
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Parameter Name</th>
+<th style="text-align: center;">Format</th>
+<th style="text-align: center;">Input Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">leg_id</td>
+<td style="text-align: center;">integer</td>
+<td style="text-align: center;">1、2、3、4</td>
+<td>They represent the left front, right front, right rear and left rear</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">data</td>
+<td style="text-align: center;">List of numbers of length 3</td>
+<td style="text-align: center;">x:[-35,35],y:[-18,18],z:[75,115]</td>
+<td>This parameter represents the foot position in mm</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">demo</span><br><span class="line">#Set the foot position of the right front leg as (10mm,-12mm,90mm)</span><br><span class="line">dog.leg(2,[10,-12,90])</span><br></pre></td></tr></table></figure>
+<p><br/></p>
+<h4 id="servo-control">Servo Control</h4>
+<p><strong>motor(motor_id, data)</strong><br />
+controls the rotation angle of the Servo</p>
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Parameter Name</th>
+<th style="text-align: center;">Format</th>
+<th style="text-align: center;">Input Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">motor_id</td>
+<td style="text-align: center;">ist of integer or integer</td>
+<td style="text-align: center;">[11,12,13,21,22,23,31,32,33,41,42,43]</td>
+<td>The first number 1,2,3,4 stand for left front , right front ,right rear ,left rear.The second number 1,2,3 stand for down ,middle and upper Servo</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">data</td>
+<td style="text-align: center;">List of numbers or numbers</td>
+<td style="text-align: center;">Down:[-65, 73],Middle:[-66, 93],Upper:[-31, 31]</td>
+<td>This parameter represents the foot position in °</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">demo</span><br><span class="line">#Set the right front leg middle Servo rotation angle to 30 °</span><br><span class="line">dog.motor(22,30)</span><br><span class="line"></span><br><span class="line">#Set the rotation angle of the upper right front leg at 10 ° and the down left rear leg at-20 °</span><br><span class="line">dog.motor([23,41],[10,-20])</span><br></pre></td></tr></table></figure>
+<p><br/></p>
+<h4 id="uninstall-the-single-leg-servo">Uninstall the single leg Servo</h4>
+<p><strong>unload_motor(leg_id)</strong><br />
+unload three Servo on one leg without output torque, which can be rotate by hand, generally used for writing actions</p>
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Parameter Name</th>
+<th style="text-align: center;">Format</th>
+<th style="text-align: center;">Input Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">leg_id</td>
+<td style="text-align: center;">integer</td>
+<td style="text-align: center;">1,2,3,4</td>
+<td>They represent the left front, right front, right rear and left rear</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="all-servo-are-uninstalled">All Servo are uninstalled</h4>
+<p><strong>unload_allmotor()</strong><br />
+makes all Servo unloaded without output torque and can be turned by hand</p>
+<h4 id="single-leg-servo-loading">Single leg Servo loading</h4>
+<p><strong>load_motor(leg_id)</strong><br />
+keeps the three Servo on one leg in current position, output the torque, which can not be rotated by hand, and is generally used for writing actions</p>
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Parameter Name</th>
+<th style="text-align: center;">Format</th>
+<th style="text-align: center;">Input Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">leg_id</td>
+<td style="text-align: center;">integer</td>
+<td style="text-align: center;">1,2,3,4</td>
+<td>They represent the left front, right front, right rear and left rear</td>
+</tr>
+</tbody>
+</table>
+<h4 id="all-servo-are-loaded">All Servo are loaded</h4>
+<p><strong>load_allmotor()</strong><br />
+keeps all Servo in current position, output torque which can not be turned by hand</p>
+<h4 id="set-the-servo-rotation-speed">Set the Servo rotation speed</h4>
+<p><strong>motor_speed(speed)</strong><br />
+adjusts the rotation speed of the Servo for separate control</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Parameter Name</th>
+<th style="text-align: center;">Format</th>
+<th style="text-align: center;">Input Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">speed</td>
+<td style="text-align: center;">integer</td>
+<td style="text-align: center;">[0,255]</td>
+<td>0 At the lowest speed and 255 at the highest speed</td>
+</tr>
+</tbody>
+</table>
+<h4 id="update-the-name-of-bluetooth">update the name of bluetooth</h4>
+<p><strong>bt_rename(name)</strong><br />
+Re-modify the bluetooth name, the bluetooth will disconnect after calling this function</p>
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Parameter Name</th>
+<th style="text-align: center;">Format</th>
+<th style="text-align: center;">Input Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">name</td>
+<td style="text-align: center;">String</td>
+<td style="text-align: center;">Length not greater than 10</td>
+<td>The Bluetooth name format of the robot dog is <strong>XGO_xxx</strong>, xxx is the modifiable part, and only supports characters in ascii code.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="perform-a-preset-action">Perform a preset action</h4>
+<p><strong>action(action_id)</strong></p>
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Parameter Name</th>
+<th style="text-align: center;">Format</th>
+<th style="text-align: center;">Input Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">action_id</td>
+<td style="text-align: center;">integer</td>
+<td style="text-align: center;">[1,255]</td>
+<td>The ID and action correspondence is shown in the table below</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">ID</th>
+<th style="text-align: center;">action</th>
+<th style="text-align: center;">ID</th>
+<th style="text-align: center;">action</th>
+<th style="text-align: center;">ID</th>
+<th style="text-align: center;">action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">fall</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">stand</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">crawling</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">circle</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">Mark time</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">Squat up</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">Roll</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">Pitch</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">Yaw</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">Three-axis rotation</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">pee</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">sit down</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">hi</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">stretch</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">wave</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">left right</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">pray</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">find food</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">shake hands</td>
+<td style="text-align: center;">happy new year</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h4 id="calibration">calibration</h4>
+<p><strong>calibration(state)</strong><br />
+If some joints have obvious position deviation after power on, you can call this function for calibration.</p>
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Parameter Name</th>
+<th style="text-align: center;">Format</th>
+<th style="text-align: center;">Input Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">state</td>
+<td style="text-align: center;">integer</td>
+<td style="text-align: center;">[0,1]</td>
+<td>1 Enter the calibration state, at this time the steering gear is unloaded, and then swing the robot dog to the calibration state, the calf is parallel to the ground, the thigh and the torso are at 90°, and the torso is parallel to the ground; 0 Complete the calibration</td>
+</tr>
+</tbody>
+</table>
+<h3 id="read">Read</h3>
+<h4 id="read-the-servo">read the servo</h4>
+<p><strong>read_motor()</strong><br />
+Read the angles of 12 servos, If the reading is successful, a list of length 12 will be returned, corresponding to servo with numbers [11, 12, 13, 21, 22, 23, 31, 32, 33, 41, 42, 43]. Returns an empty list if the read fails</p>
+<h4 id="read-the-battery">Read the battery</h4>
+<p><strong>read_battery()</strong><br />
+read the current battery level, If the reading is successful, it will return an integer from 1 to 100, which represents the percentage of remaining battery power. Returns 0 on read failure.</p>
+<h4 id="read-positon">read positon</h4>
+<p><strong>read_roll()</strong><br />
+<strong>read_pitch()</strong><br />
+<strong>read_yaw()</strong><br />
+Read the current attitude angle, if the reading is successful, a floating-point number will be returned, and if the reading fails, it will return 0</p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/XgoWiki-en/wiki/1%20XGO-Mini/For%20XGO%20developer/How%20to%20install%20Raspberry%20on%20XGO-Mini/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    How to install Raspberry on XGO-Mini
+                
+            </div>
+        </a>
+    
+    
+        <a href="/XgoWiki-en/wiki/1%20XGO-Mini/For%20XGO%20developer/Serial%20protocol/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Serial protocol</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Xgo Wiki &copy; 2022 
+            <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/XgoWiki-en/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/XgoWiki-en/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/XgoWiki-en/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/XgoWiki-en/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/XgoWiki-en/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/XgoWiki-en/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/XgoWiki-en/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/XgoWiki-en/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/XgoWiki-en/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/XgoWiki-en/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/XgoWiki-en/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

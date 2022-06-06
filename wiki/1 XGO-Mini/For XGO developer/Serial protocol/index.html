@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Serial protocol | Xgo Wiki</title>
+    
+    
+        <meta name="keywords" content="Serial protocol" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Document purpose This document applies to the communication protocol of data interaction between any host computer and XGO series robot dog driver board. It is suitable for secondary development of X">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Serial protocol">
+<meta property="og:url" content="https://xgorobot.github.io/XgoWiki-en/wiki/1%20XGO-Mini/For%20XGO%20developer/Serial%20protocol/index.html">
+<meta property="og:site_name" content="Xgo Wiki">
+<meta property="og:description" content="Document purpose This document applies to the communication protocol of data interaction between any host computer and XGO series robot dog driver board. It is suitable for secondary development of X">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://xgorobot.github.io/XgoWiki-en/wiki/1%20XGO-Mini/For%20XGO%20developer/Serial%20protocol/board.png">
+<meta property="og:image" content="https://xgorobot.github.io/XgoWiki-en/wiki/1%20XGO-Mini/For%20XGO%20developer/Serial%20protocol/XYZ.png">
+<meta property="og:image" content="https://xgorobot.github.io/XgoWiki-en/wiki/1%20XGO-Mini/For%20XGO%20developer/Serial%20protocol/coordinate_system_of_leg.png">
+<meta property="article:published_time" content="2022-02-23T15:45:57.000Z">
+<meta property="article:modified_time" content="2022-06-06T05:34:01.893Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xgorobot.github.io/XgoWiki-en/wiki/1%20XGO-Mini/For%20XGO%20developer/Serial%20protocol/board.png">
+    
+
+    
+
+    
+        <link rel="icon" href="/XgoWiki-en/images/xgo_icon45.png" />
+    
+
+    
+<link rel="stylesheet" href="/XgoWiki-en/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/XgoWiki-en/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/XgoWiki-en/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/XgoWiki-en/css/style.css">
+
+    
+<script src="/XgoWiki-en/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/XgoWiki-en/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/XgoWiki-en/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/XgoWiki-en/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/XgoWiki-en/atom.xml" title="Xgo Wiki" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/XgoWiki-en/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Xgo Wiki</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/XgoWiki-en/">home</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/XgoWiki-en/',
+        CONTENT_URL: '/XgoWiki-en/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/XgoWiki-en/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/XgoWiki-en/">home</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            1 XGO-Mini
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            F.A.Q
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/F.A.Q/How%20to%20calibrate%20XGO-Mini/">How to calibrate XGO-Mini?</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/F.A.Q/How%20to%20program%20with%20Micropython/">How to program with Micropython?</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/F.A.Q/How%20to%20update%20firmware%20of%20K210%20and%20SD%20files/">How to update firmware of K210 and SD files</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/F.A.Q/How%20to%20update%20firmware%20of%20XGO-Mini%20driver/">How to update firmware of XGO-Mini driver</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            For XGO developer
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/For%20XGO%20developer/Develop%20mode/">Develop mode</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/For%20XGO%20developer/How%20to%20install%20Raspberry%20on%20XGO-Mini/">How to install Raspberry on XGO-Mini</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/For%20XGO%20developer/Python%20Lib/">Python Lib</a></li>  <li class="file active"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/For%20XGO%20developer/Serial%20protocol/">Serial protocol</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/For%20XGO%20developer/ROS%20package/"><ROS Pankaee></a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/For%20XGO%20developer/ROS/">ROS</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Troubleshooting
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/Troubleshooting/Can%20not%20walk%20strightly%20in%20line/">Can not walk strightly in line</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/Troubleshooting/Can%20not%20connect%20by%20bluetooth/">Can not connect by bluetooth</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/Product%20Introduction/">Product introduction</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/What's%20in%20the%20box/">What's in the box?</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/specifications/">specifications</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/Hardware%20overview/">Hardware overview</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/Remote%20control/">Remote control</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/Quick%20start/">Quick start</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/Programming%20platform/">Programming platform</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/1%20XGO-Mini/Course%20center/">Course center</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            2 XGO-Lite
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/XgoWiki-en/wiki/2%20XGO-Lite/Product%20Introduction/">Product Introduction</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/2%20XGO-Lite/What's%20in%20the%20box/">What's in the box?</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/2%20XGO-Lite/Specifications/">Specifications</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/2%20XGO-Lite/Remote%20control/">Remote control</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/2%20XGO-Lite/Quick%20start/">Quick start</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/2%20XGO-Lite/Programming%20platform/">Programming platform</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/2%20XGO-Lite/Course%20center/">Course center</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            3 XGO-Ultra
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/XgoWiki-en/wiki/3%20XGO-Ultra/Product%20introduction/">Product introduction</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/XgoWiki-en/wiki/Xgo/">Luwu Dynamics</a></li>  <li class="file"><a href="/XgoWiki-en/wiki/Edit/">编辑指南</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-1 XGO-Mini/For XGO developer/Serial protocol" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/XgoWiki-en/categories/1-XGO-Mini/">1 XGO-Mini</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/XgoWiki-en/categories/1-XGO-Mini/For-XGO-developer/">For XGO developer</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/XgoWiki-en/wiki/1%20XGO-Mini/For%20XGO%20developer/Serial%20protocol/">
+            <time datetime="2022-02-23T15:45:57.000Z" itemprop="datePublished">2022-02-23</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/Xgorobot/Wiki-site/raw/en/source/_posts/1 XGO-Mini/For XGO developer/Serial protocol.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/Xgorobot/Wiki-site/edit/en/source/_posts/1 XGO-Mini/For XGO developer/Serial protocol.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/Xgorobot/Wiki-site/commits/en/source/_posts/1 XGO-Mini/For XGO developer/Serial protocol.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Serial protocol
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#document-purpose"><span class="toc-number">1.</span> <span class="toc-text">Document purpose</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#update-record"><span class="toc-number">2.</span> <span class="toc-text">Update record</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hardware-connection"><span class="toc-number">3.</span> <span class="toc-text">Hardware connection</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#software-interface"><span class="toc-number"></span> <span class="toc-text">Software interface</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#data-frame-format"><span class="toc-number">1.</span> <span class="toc-text">Data frame format</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#instructions"><span class="toc-number">2.</span> <span class="toc-text">Instructions</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#write-command-no-response-0x00"><span class="toc-number">2.1.</span> <span class="toc-text">Write command, no response (0x00)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#read-command-there-is-a-response-0x02"><span class="toc-number">2.2.</span> <span class="toc-text">Read command, there is a response (0x02)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#robot-dog-coordinate-system-definition"><span class="toc-number">3.</span> <span class="toc-text">Robot dog coordinate system definition</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#machine-coordinate-system"><span class="toc-number">3.1.</span> <span class="toc-text">Machine coordinate system</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#single-leg-coordinate-system"><span class="toc-number">3.2.</span> <span class="toc-text">Single leg coordinate system</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#the-memtable-of-xgo-is-as-below"><span class="toc-number"></span> <span class="toc-text">The MemTable of XGO is as below</span></a>
+                </div>
+            
+        
+        
+            <h2 id="document-purpose">Document purpose</h2>
+<p>This document applies to the communication protocol of data interaction between any host computer and XGO series robot dog driver board. It is suitable for secondary development of XGO by high-level developers.The communication protocol is based on standard TTL serial communication and features XH2.54 4PIN interface connection.</p>
+<h2 id="update-record">Update record</h2>
+<p>2022.3.10 Create.</p>
+<h2 id="hardware-connection">Hardware connection</h2>
+<p>  Use a hexagonal wrench to unscrew the two screws on the back, the screws on the left and right sides, and the two screws on the tail, remove the back panel of the robot dog, and unplug the switch cable.</br>   As shown in the figure below, there are two serial communication interfaces on one side of the motherboard, which are connected according to the motherboard silkscreen line sequence and the host computer line sequence (TX to RX, RX to TX), and then you can debug. The external power supply voltages of the two terminals are 5V and 3.3V respectively, which cannot be used at the same time.</br>   By default, the 3.3V terminal is occupied by the AI module. If you want to use other devices for serial control, please unplug the AI module and the motherboard. </br> <img src="./board.png" alt="XGO-Mini Board" style="zoom:60%;" /></p>
+<h1 id="software-interface">Software interface</h1>
+<p>  Standard TTL serial communication.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Baud Rate</th>
+<th style="text-align: center;">115200</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Data Bits</td>
+<td style="text-align: center;">8</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">stop bit</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Parity Bits</td>
+<td style="text-align: center;">None</td>
+</tr>
+</tbody>
+</table>
+<h2 id="data-frame-format">Data frame format</h2>
+<p>  The data frame is a fixed format: frame header + frame length + data + checksum + frame tail.</p>
+<table>
+<colgroup>
+<col style="width: 42%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Frame header</th>
+<th style="text-align: center;">Fixed to 0x55 0x00</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Frame Length</td>
+<td style="text-align: center;">Number of bytes in the entire data frame</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Data</td>
+<td style="text-align: center;">has different meanings depending on the type of command, see Part II</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Checksum</td>
+<td style="text-align: center;">Add all bytes of length and data, take the least significant byte, and negate</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">End of frame</td>
+<td style="text-align: center;">Fixed at 0x00 0xAA</td>
+</tr>
+</tbody>
+</table>
+<h2 id="instructions">Instructions</h2>
+<h3 id="write-command-no-response-0x00">Write command, no response (0x00)</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Frame Header</strong></th>
+<th style="text-align: center;"><strong>Frame Length</strong></th>
+<th style="text-align: center;"><strong>Command Type</strong></th>
+<th style="text-align: center;"><strong>First Address</strong></th>
+<th style="text-align: center;"><strong>Data</strong></th>
+<th style="text-align: center;"><strong>Checksum</strong></th>
+<th style="text-align: center;"><strong>Frame End</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0x55 0x00</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0x00</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">data</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0x00 0xAA</td>
+</tr>
+</tbody>
+</table>
+<p>The write command will continuously modify the data starting from the first address, and no response will be generated. </br> &gt;For example, modify the forward speed of the robot dog, the forward speed address is 0x30, so that it advances at the maximum speed, that is, the speed content is 0xFF, the specific instructions are as follows:</br> &gt;0x55 0x00 0x09 0x00 0x30 0xFF 0xC7 0x00 0xAA</br> &gt; where the checksum calculation process is as follows:</br> &gt;0x09+0x00+0x30+0xFF=0x138, take the lowest byte 0x38, negate it to get 0xC7</br></p>
+<h3 id="read-command-there-is-a-response-0x02">Read command, there is a response (0x02)</h3>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 17%" />
+<col style="width: 12%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>frame header</strong></th>
+<th style="text-align: center;"><strong>frame length</strong></th>
+<th style="text-align: center;"><strong>command type</strong></th>
+<th style="text-align: center;"><strong>first address</strong></th>
+<th style="text-align: center;"><strong>read length</strong></th>
+<th style="text-align: center;"><strong>checksum</strong></th>
+<th style="text-align: center;">**frame end* *</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0x55 0x00</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0x02</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">uint_8</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0x00 0xAA</td>
+</tr>
+</tbody>
+</table>
+<p>The write command will continuously read the data starting from the first address, and no response will be generated.</br> The format of the returned packet is:</br></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Frame Header</strong></th>
+<th style="text-align: center;"><strong>Frame Length</strong></th>
+<th style="text-align: center;"><strong>Command Type</strong></th>
+<th style="text-align: center;"><strong>First Address</strong></th>
+<th style="text-align: center;"><strong>Data</strong></th>
+<th style="text-align: center;"><strong>Checksum</strong></th>
+<th style="text-align: center;"><strong>Frame End</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0x55 0x00</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0x12</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">data</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0x00 0xAA</td>
+</tr>
+</tbody>
+</table>
+<p></br> &gt;For example, read the angles of 12 servos, 0x50 is the address of the first servo position, and 0x0C means read 12 consecutively. The specific instructions are as follows:</br> &gt;0x55 0x00 0x09 0x02 0x50 0x0C 0x98 0x00 0xAA</br> &gt; where the checksum calculation process is as follows:</br> &gt;0x09+0x02+0x50+0x0C=0x67, negate to get 0x98</br> </br> &gt;Read return packets:</br> &gt;0x55 0x00 0x14 0x12 0x50 0x80 0x80 0x80 0x80 0x80 0x80 0x80 0x80 0x80 0x80 0x80 0x80 0x89 0x00 0xAA</br></p>
+<h2 id="robot-dog-coordinate-system-definition">Robot dog coordinate system definition</h2>
+<h3 id="machine-coordinate-system">Machine coordinate system</h3>
+<p>In the initial standing position, the origin is directly below the fuselage, the forward direction of the robot dog is the positive X axis, the left is the positive Y axis, and the top is the positive Z axis. </br> <img src="./XYZ.png" alt="Schematic diagram of the coordinate system of the robot dog" style="zoom:60%;" /></p>
+<h3 id="single-leg-coordinate-system">Single leg coordinate system</h3>
+<p>The single-leg coordinate system is used to describe the position of the foot. The four legs correspond to four independent single-leg coordinate systems. The thigh joint is the origin. The forward direction of the robot dog is the positive x-axis, the left is the positive Y-axis, and the bottom is the positive Z-axis. Towards. </br> </br> </br> <img src="./coordinate_system_of_leg.png" alt="Schematic diagram of the single-leg coordinate system of the robot dog" style="zoom:80%;" /></p>
+<h1 id="the-memtable-of-xgo-is-as-below">The MemTable of XGO is as below</h1>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 14%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 57%" />
+<col style="width: 7%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Adress</strong></th>
+<th style="text-align: center;"><strong>Function</strong></th>
+<th style="text-align: center;"><strong>Read-Write</strong></th>
+<th style="text-align: center;"><strong>Initial Value</strong></th>
+<th style="text-align: center;"><strong>Note</strong></th>
+<th style="text-align: center;"><strong>Mode</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0x00</td>
+<td style="text-align: center;">Mode of operation</td>
+<td style="text-align: center;">Read</td>
+<td style="text-align: center;">0x00</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">State information</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0x01</td>
+<td style="text-align: center;">Battery level</td>
+<td style="text-align: center;">Read</td>
+<td style="text-align: center;">0xff</td>
+<td style="text-align: center;">Range: 0-100, linearly corresponding to the lowest-highest battey level</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0x02</td>
+<td style="text-align: center;">XGO version</td>
+<td style="text-align: center;">Read</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0x00 MINI 0x01 Lite 0x02 PRO</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0x03</td>
+<td style="text-align: center;">Performance mode</td>
+<td style="text-align: center;">Write</td>
+<td style="text-align: center;">0x00</td>
+<td style="text-align: center;">0x00 normal control mode 0x01 cyclic action</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0x04</td>
+<td style="text-align: center;">Calibration mode</td>
+<td style="text-align: center;">Write</td>
+<td style="text-align: center;">0x00</td>
+<td style="text-align: center;">0x01 Enter the calibration mode 0x00 Exit the calibration mode</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0x13</td>
+<td style="text-align: center;">Bluetooth</td>
+<td style="text-align: center;">Write</td>
+<td style="text-align: center;">XGOMINI</td>
+<td style="text-align: center;">The length of the name is 10 bytes, and it cannot be Chinese. After naming, the Bluetooth name is XGO_xxxxxx</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0x20</td>
+<td style="text-align: center;">Unmount Servo</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x00</td>
+<td style="text-align: center;">0x00 Servo in normal operation, 0x01 Unmount all servo, 0x11-0x14 Unmount 1-4 leg in order, 0x21-0x24 Remount 1-4 leg in order</td>
+<td style="text-align: center;">debug mode</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0x21</td>
+<td style="text-align: center;">Reset zero posttion of servo</td>
+<td style="text-align: center;">Write</td>
+<td style="text-align: center;">0x00</td>
+<td style="text-align: center;">0x00 servo nornal ,0x01 record the current position as the zero position,Once set as 0x01, the register will automatically jump to 0x00</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0x30</td>
+<td style="text-align: center;">Forward/backward movement speed</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;">Range: 0x00-0xff, linearly corresponding to the revers max. value-forward max. value. The forward direction is the same as the robot coordinate system</td>
+<td style="text-align: center;">Whole unit mode</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0x31</td>
+<td style="text-align: center;">Left/right movement speed</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;">Range: 0x00-0xff, linearly corresponding to the revers max. value-forward max. value. The forward direction is the same as the robot coordinate system</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0x32</td>
+<td style="text-align: center;">Clockwise/counterclockwise rotation speed</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;">The direction follows the right hand principle</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0x33</td>
+<td style="text-align: center;">Body shift distance along the x direction</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;">The point of contact between the foot and the ground remains unchanged and the body twists</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0x34</td>
+<td style="text-align: center;">Body shift distance along the x direction</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;">The point of contact between the foot and the ground remains unchanged and the body twists</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0x35</td>
+<td style="text-align: center;">Body height</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;">The point of contact between the foot and the ground remains unchanged and the body twists</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0x36</td>
+<td style="text-align: center;">Angle at which the body rotates around the x axis</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;">The direction follows the right hand principle</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0x37</td>
+<td style="text-align: center;">Angle at which the body rotates around the y axis</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;">The direction follows the right hand principle</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0x38</td>
+<td style="text-align: center;">Angle at which the body rotates around the z axis</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;">The direction follows the right hand principle</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0x39</td>
+<td style="text-align: center;">A given period in which the body rotates around the x axis</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x00</td>
+<td style="text-align: center;">0x00 stops, 0x01-0xff linearly corresponds to the minimum-maximum rotation speed, this function cannot work at the same time as setting the position register directly</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0x3A</td>
+<td style="text-align: center;">A given period in which the body rotates around the y axis</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x00</td>
+<td style="text-align: center;">0x00 stops, 0x01-0xff linearly corresponds to the minimum-maximum rotation speed, this function cannot work at the same time as setting the position register directly</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0x3B</td>
+<td style="text-align: center;">A given period in which the body rotates around the y axis</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x00</td>
+<td style="text-align: center;">0x00 stops, 0x01-0xff linearly corresponds to the minimum-maximum rotation speed, this function cannot work at the same time as setting the position register directly</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0x3C</td>
+<td style="text-align: center;">mark time</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x00</td>
+<td style="text-align: center;">0x00 stop, 0x01-0xff linearly corresponds to the min.-max. marktime height</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0x3D</td>
+<td style="text-align: center;">Moving mode</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x00</td>
+<td style="text-align: center;">0x00 Move at normal speed 0x01 Move at slow speed 0x02 Move at high speed</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0x3E</td>
+<td style="text-align: center;">action</td>
+<td style="text-align: center;">Write</td>
+<td style="text-align: center;">0x00</td>
+<td style="text-align: center;">List of action commands, 0 is the default stance 1-N means each action (0-N is decimal value), 1: lying down, 2: standing up, 3: creeping, 4: circling, 5: stepping, 6: squatting, 7: rolling , 8: pitching, 9: yawing, 10 three-axis rotation, 11 peeing, 12 sitting, 13 beckoning, 14: stretching, 15: waving, 16 swaying, 17 begging for food, 18 searching food, 19 shaking hands</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;">A given period in which the body shifts along the X axis</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x00</td>
+<td style="text-align: center;">0x00 stop, 0x01-0xff corresponds to the min.-max. rotation speed, the extent of movement is a half of the position limit</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0x81</td>
+<td style="text-align: center;">A given period in which the body shifts along the Y axis</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x00</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0x82</td>
+<td style="text-align: center;">A given period in which the body shifts along the Z axis</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x00</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0x40</td>
+<td style="text-align: center;">X position of leg 1</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;">Range: 0x00-0xff, linearly corresponding to the reverse max. value-forward max. value, the forward direction is the same as the robot coordinate system</td>
+<td style="text-align: center;">leg mode</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0x41</td>
+<td style="text-align: center;">Y position of leg 1</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0x42</td>
+<td style="text-align: center;">Z position of leg 1</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0x43</td>
+<td style="text-align: center;">X position of leg 2</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0x44</td>
+<td style="text-align: center;">Y position of leg 2</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0x45</td>
+<td style="text-align: center;">Z position of leg 2</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0x46</td>
+<td style="text-align: center;">X position of leg 3</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0x47</td>
+<td style="text-align: center;">Y position of leg 3</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0x48</td>
+<td style="text-align: center;">Z position of leg 3</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0x49</td>
+<td style="text-align: center;">X position of leg 4</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0x4A</td>
+<td style="text-align: center;">Y position of leg 4</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0x4B</td>
+<td style="text-align: center;">Z position of leg 4</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0x50</td>
+<td style="text-align: center;">Position of Servo 11</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;">Range: 0x00-0xff, linearly corresponding to the reverse max. value-forward max. value</td>
+<td style="text-align: center;">servo mode</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0x51</td>
+<td style="text-align: center;">Position of Servo 12</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0x52</td>
+<td style="text-align: center;">Position of Servo 13</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0x53</td>
+<td style="text-align: center;">Position of Servo 21</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0x54</td>
+<td style="text-align: center;">Position of Servo 22</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0x55</td>
+<td style="text-align: center;">Position of Servo 23</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0x56</td>
+<td style="text-align: center;">Position of Servo 31</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0x57</td>
+<td style="text-align: center;">Position of Servo 32</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0x58</td>
+<td style="text-align: center;">Position of Servo 33</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0x59</td>
+<td style="text-align: center;">Position of Servo 41</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0x5A</td>
+<td style="text-align: center;">Position of Servo 42</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0x5B</td>
+<td style="text-align: center;">Position of Servo 43</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0x5C</td>
+<td style="text-align: center;">Servo speed</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x80</td>
+<td style="text-align: center;">Range: 0x00-0xff, linearly corresponding to the min. - max. value (only applicable under this mode)</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0x5D</td>
+<td style="text-align: center;">Standing posture</td>
+<td style="text-align: center;">Write</td>
+<td style="text-align: center;">0x00</td>
+<td style="text-align: center;">0x00 inactive. 0x01 The gear position returns to the standing position. Once set as 0x01, the register will automatically jump to 0x00</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0x61</td>
+<td style="text-align: center;">IMU state</td>
+<td style="text-align: center;">Read-Write</td>
+<td style="text-align: center;">0x00</td>
+<td style="text-align: center;">0x00 close 0x01 self-stabilizing mode</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0x62</td>
+<td style="text-align: center;">ROLL</td>
+<td style="text-align: center;">Read</td>
+<td style="text-align: center;">0x01</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0x63</td>
+<td style="text-align: center;">PITCH</td>
+<td style="text-align: center;">Read</td>
+<td style="text-align: center;">0x02</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0x64</td>
+<td style="text-align: center;">YAW</td>
+<td style="text-align: center;">Read</td>
+<td style="text-align: center;">0x03</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/XgoWiki-en/wiki/1%20XGO-Mini/For%20XGO%20developer/Python%20Lib/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Python Lib
+                
+            </div>
+        </a>
+    
+    
+        <a href="/XgoWiki-en/wiki/1%20XGO-Mini/Troubleshooting/Can%20not%20connect%20by%20bluetooth/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Can not connect by bluetooth</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Xgo Wiki &copy; 2022 
+            <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/XgoWiki-en/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/XgoWiki-en/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/XgoWiki-en/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/XgoWiki-en/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/XgoWiki-en/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/XgoWiki-en/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/XgoWiki-en/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/XgoWiki-en/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/XgoWiki-en/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/XgoWiki-en/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/XgoWiki-en/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>
